@@ -1,0 +1,4 @@
+<h1>Upload files</h1>
+<%= form_tag vouchers_path, :html => {multipart: true} do
+  file_field_tag :image_files, :multiple => true, name: 'image_files[]', style: 'display:none', :id => 'fileinput'
+-%>

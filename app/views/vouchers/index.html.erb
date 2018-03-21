@@ -1,0 +1,7 @@
+
+<% @vouchers.each do |voucher| %>
+<dl>
+  <dt><%= img_tag voucher.image_url if voucher.image %></dt>
+  <dd><%= voucher.code %></dd>
+</dl>
+<% end %>
