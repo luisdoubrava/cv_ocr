@@ -3,11 +3,11 @@
   <thead>
     <tr>
       <th>Code</th>
-      <th>
+      <!-- <th>
         <%= image_tag 'ocr/tesseract.png' %>
         <br />
         <b>Tesseract</b>
-      </th>
+      </th> -->
       <th>
         <%= image_tag 'ocr/google-cloud-vision.png' %>
         <br />
@@ -33,14 +33,14 @@
             </div>
             <%= f.submit 'Save code', class: 'btn btn-primary' %>
           </td>
-          <td>
+          <!-- <td>
             <div class="input-group">
               <%= f.text_field :code_tesseract, readonly: true, cols: 20, rows: 3, class: 'form-control'  %>
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-copy"></span>
               </span>
             </div>
-          </td>
+          </td> -->
           <td>
             <div class="input-group">
               <%= f.text_field :code_google, readonly: true, cols: 20, rows: 3, class: 'form-control' %>

@@ -9,7 +9,7 @@ class Voucher < ApplicationRecord
 
   def process_image
     process_image_by_google
-    process_image_by_tesseract
+    # process_image_by_tesseract
     process_image_by_computer_vision
     save
   end
