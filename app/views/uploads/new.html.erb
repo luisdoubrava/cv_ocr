@@ -1,13 +1,21 @@
-<h1>Upload voucher image</h1>
+<h2>Upload voucher image</h2>
 <%= form_tag vouchers_path, multipart: true do %>
-  <div class="row">
-    <div class='large-4 columns'>
+  <div class='large-4 columns'>
+    <label class="btn btn-default btn-file">
       <%= file_field_tag :image_files, :multiple => true, name: 'image_files[]', :id => 'fileinput' %>
-    </div>
+    </label>
+    <%= submit_tag 'Upload files', class: 'btn btn-primary' %>
   </div>
-  <div class="row">
-    <div class='large-4 columns'>
-      <%= submit_tag 'Upload files', class: 'button' %>
+
+  <h2>Or drop your images here</h2>
+  <article>
+    <div id="holder">
     </div>
-  </div>
+    <p style="display: none;" id="upload" class="hidden"><label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
+    <p style="display: none;" id="filereader">File API & FileReader API not supported</p>
+    <p style="display: none;" id="formdata">XHR2's FormData is not supported</p>
+    <p style="display: none;" id="progress">XHR2's upload progress isn't supported</p>
+    <p style="display: none;">Upload progress: <progress id="uploadprogress" max="100" value="0">0</progress></p>
+    <p style="display: none;">Drag an image from your desktop on to the drop zone above to see the browser both render the preview, but also upload automatically to this server.</p>
+  </article>
 <% end %>

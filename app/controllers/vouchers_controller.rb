@@ -1,4 +1,7 @@
 class VouchersController < ApplicationController
+
+  skip_before_action :verify_authenticity_token # This has to be fixed, is needed for drag&drop upload but is hacky...
+
   def index
     @vouchers = Voucher.page(params[:page]).per(50)
   end

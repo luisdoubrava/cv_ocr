@@ -84,6 +84,8 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
+    dropzonejs-rails (0.8.2)
+      rails (> 3.1)
     erubi (1.7.1)
     execjs (2.7.0)
     factory_bot (4.8.2)
@@ -331,6 +333,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  dropzonejs-rails
   factory_bot_rails
   google-cloud-vision
   jbuilder (~> 2.5)
