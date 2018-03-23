@@ -1,6 +1,6 @@
 class VouchersController < ApplicationController
   def index
-    @vouchers = Voucher.page(params[:page]).per(3)
+    @vouchers = Voucher.page(params[:page]).per(50)
   end
 
   def create

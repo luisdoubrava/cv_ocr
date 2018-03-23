@@ -1,32 +1,61 @@
 <h1>Processed vouchers</h1>
-<table>
+<table id="processedVouchers" class="table table-hover">
   <thead>
     <tr>
-      <th>Image</th>
       <th>Code</th>
-      <th>Tesseract</th>
-      <th>Google Cloud Vision</th>
-      <th>Computer Vision</th>
+      <th>
+        <%= image_tag 'ocr/tesseract.png' %>
+        <br />
+        <b>Tesseract</b>
+      </th>
+      <th>
+        <%= image_tag 'ocr/google-cloud-vision.png' %>
+        <br />
+        <b>Google Cloud Vision</b>
+      </th>
+      <th>
+        <%= image_tag 'ocr/microsoft-azure.png' %>
+        <br />
+        <b>Computer Vision</b>
+      </th>
     </tr>
   </thead>
   <% @vouchers.each do |voucher| %>
     <tbody>
       <%= form_for voucher do |f| %>
-        <tr>
-          <td><%= image_tag voucher.image_url, width: '200' if voucher.image %></td>
-          <td>
-
-              <%= f.text_field :code %>
-              <%= f.submit 'Save code' %>
+        <tr class="voucher-row">
+          <td class="voucher-code">
+            <%= image_tag voucher.image_url, width: '200' if voucher.image %>
+            <br />
+            <br />
+            <div class="form-group">
+              <%= f.text_field :code, class: 'form-control' %>
+            </div>
+            <%= f.submit 'Save code', class: 'btn btn-primary' %>
           </td>
           <td>
-            <%= f.text_area :code_tesseract, readonly: true, cols: 50, rows: 3  %>
+            <div class="input-group">
+              <%= f.text_field :code_tesseract, readonly: true, cols: 20, rows: 3, class: 'form-control'  %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-copy"></span>
+              </span>
+            </div>
           </td>
           <td>
-            <%= f.text_area :code_google, readonly: true, cols: 50, rows: 3 %>
+            <div class="input-group">
+              <%= f.text_field :code_google, readonly: true, cols: 20, rows: 3, class: 'form-control' %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-copy"></span>
+              </span>
+            </div>
           </td>
           <td>
-            <%= f.text_area :code_computer_vision, readonly: true, cols: 50, rows: 3 %>
+            <div class="input-group">
+              <%= f.text_field :code_computer_vision, readonly: true, cols: 20, rows: 3, class: 'form-control' %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-copy"></span>
+              </span>
+            </div>
           </td>
         </tr>
       <% end %>
@@ -34,6 +63,3 @@
 <% end %>
 </table>
 <%= paginate @vouchers %>
-<script>
-
-</script>
