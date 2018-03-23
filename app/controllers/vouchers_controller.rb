@@ -19,6 +19,11 @@ class VouchersController < ApplicationController
     redirect_to vouchers_path
   end
 
+  def destroy
+    Voucher.find(params[:id]).delete
+    redirect_to vouchers_path
+  end
+
   private
 
   def voucher_params

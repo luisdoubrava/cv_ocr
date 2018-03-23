@@ -27,6 +27,7 @@
         <tr class="voucher-row">
           <td class="voucher-code">
             <%= image_tag voucher.image_url, width: '200' if voucher.image %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, voucher, method: :delete, data: { confirm: 'Are you sure?' } %>
             <br />
             <br />
             <div class="form-group">
