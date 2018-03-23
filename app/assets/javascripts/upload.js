@@ -20,13 +20,17 @@ var holder = document.getElementById('holder'),
 
 "filereader formdata progress".split(' ').forEach(function (api) {
     if (tests[api] === false) {
-        support[api].className = 'fail';
+        if (support[api] != null) {
+            support[api].className = 'fail';
+        }
     } else {
         // FFS. I could have done el.hidden = true, but IE doesn't support
         // hidden, so I tried to create a polyfill that would extend the
         // Element.prototype, but then IE10 doesn't even give me access
         // to the Element object. Brilliant.
-        support[api].className = 'hidden';
+        if (support[api] != null) {
+            support[api].className = 'hidden';
+        }
     }
 });
 
@@ -77,12 +81,20 @@ function readfiles(files) {
 }
 
 if (tests.dnd) {
-    holder.ondragover = function () { this.className = 'hover'; return false; };
-    holder.ondragend = function () { this.className = ''; return false; };
-    holder.ondrop = function (e) {
-        this.className = '';
-        e.preventDefault();
-        readfiles(e.dataTransfer.files);
+    if (holder != null) {
+        holder.ondragover = function () {
+            this.className = 'hover';
+            return false;
+        };
+        holder.ondragend = function () {
+            this.className = '';
+            return false;
+        };
+        holder.ondrop = function (e) {
+            this.className = '';
+            e.preventDefault();
+            readfiles(e.dataTransfer.files);
+        }
     }
 } else {
     fileupload.className = 'hidden';
