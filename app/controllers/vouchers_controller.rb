@@ -1,11 +1,12 @@
 class VouchersController < ApplicationController
   def index
-    @voucher = Voucher.all
+    @vouchers = Voucher.page(params[:page]).per(3)
   end
 
   def create
     (params[:image_files] || []).each do |img|
-      @voucher = Voucher.create(image: img)
+      Voucher.create(image: img)
     end
+    redirect_to vouchers_path
   end
 end

@@ -33,14 +33,26 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'devise'
+gem 'mini_magick'
+gem 'kaminari'
+
+# ocr gems
 gem 'google-cloud-vision'
+gem 'rtesseract'
+gem 'ocr_space'
 
 gem 'carrierwave', '~> 1.0'
+
+# Zurb foundation
+gem 'foundation-rails', '~> 6.2'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'
   gem 'pry-byebug'
