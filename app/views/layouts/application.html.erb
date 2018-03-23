@@ -12,17 +12,26 @@
   </head>
 
   <body>
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text"><%= image_tag 'logo.png', size: "50x50" %></li>
-          <li><%= link_to "Upload images", uploads_path %></li>
-          <li><%= link_to "Vouchers", vouchers_path %></li>
-        </ul>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">
+            <%= image_tag 'logo.png', size: "25x25" %>
+          </a>
+          <a class="navbar-brand" href="/">
+            Wall CG
+          </a>
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Upload images", uploads_path %></li>
+            <li><%= link_to "Vouchers", vouchers_path %></li>
+          </ul>
+        </div>
       </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+      <%= yield :sidebar %>
     </div>
-    <%= yield %>
-    <%= yield :sidebar %>
 
   </body>
 </html>
