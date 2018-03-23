@@ -3,20 +3,37 @@
   <thead>
     <tr>
       <th>Image</th>
+      <th>Code</th>
       <th>Tesseract</th>
-      <th>OCR Space</th>
+      <th>Computer Vision</th>
       <th>Google Cloud Vision</th>
     </tr>
   </thead>
   <% @vouchers.each do |voucher| %>
     <tbody>
-      <tr>
-        <td><%= image_tag voucher.image_url, width: '200' if voucher.image %></td>
-        <td><%= voucher.code_tesseract %></td>
-        <td><%= voucher.code_ocr_space %></td>
-        <td><%= voucher.code_google %></td>
-      </tr>
+      <%= form_for voucher do |f| %>
+        <tr>
+          <td><%= image_tag voucher.image_url, width: '200' if voucher.image %></td>
+          <td>
+
+              <%= f.text_field :code %>
+              <%= f.submit 'Save code' %>
+          </td>
+          <td>
+            <%= f.text_area :code_tesseract, readonly: true, cols: 50, rows: 3  %>
+          </td>
+          <td>
+            <%= f.text_area :code_ocr_space, readonly: true, cols: 50, rows: 3 %>
+          </td>
+          <td>
+            <%= f.text_area :code_google, readonly: true, cols: 50, rows: 3 %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
 <% end %>
 </table>
 <%= paginate @vouchers %>
+<script>
+
+</script>
