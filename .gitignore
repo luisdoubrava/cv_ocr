@@ -11,6 +11,7 @@
 /log/*
 /tmp/*
 /public/*
+keyfiles/*
 !/log/.keep
 !/tmp/.keep
 

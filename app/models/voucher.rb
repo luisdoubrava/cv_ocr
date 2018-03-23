@@ -2,19 +2,25 @@ class Voucher < ApplicationRecord
   require 'google/cloud/vision'
   require 'rtesseract'
   require 'ocr_space'
+  require 'net/http'
 
   mount_uploader :image, VoucherImageUploader
   after_create :process_image
 
   def process_image
-    # process_image_by_google
+    process_image_by_google
     process_image_by_tesseract
-    process_image_by_ocr_space
+    # process_image_by_ocr_space
+    # process_image_by_computer_vision
     save
   end
 
+  def process_image_by_computer_vision
+  end
+
   def process_image_by_google
-    vision = Google::Cloud::Vision.new
+    vision = Google::Cloud::Vision.new project: ENV['GOOGLE_CLOUD_PROJECT'],
+                                       keyfile: ENV['GOOGLE_CLOUD_KEYFILE']
     resource = vision.image image.current_path
 
     self.code_google = resource.text
