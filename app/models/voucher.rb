@@ -18,8 +18,7 @@ class Voucher < ApplicationRecord
   end
 
   def process_image_by_google
-    vision = Google::Cloud::Vision.new project: ENV['GOOGLE_CLOUD_PROJECT'],
-                                       keyfile: ENV['GOOGLE_CLOUD_KEYFILE']
+    vision = Google::Cloud::Vision.new
     resource = vision.image image.current_path
 
     self.code_google = resource.text
