@@ -14,25 +14,16 @@ class Voucher < ApplicationRecord
     save
   end
 
-  def process_image_by_computer_vision
-  end
-
   def process_image_by_google
     vision = Google::Cloud::Vision.new
     resource = vision.image image.current_path
 
-    self.code_google = resource.text
+    self.code_google = format_code(resource.text.to_s)
   end
 
   def process_image_by_tesseract
     resource = RTesseract.new image.current_path, processor: 'mini_magick'
-    self.code_tesseract = resource.to_s
-  end
-
-  def process_image_by_ocr_space
-    resource = OcrSpace::Resource.new(apikey: ENV['OCR_API_KEY'])
-    result = resource.convert file: image.current_path
-    self.code_ocr_space = result.try(:[], 'ParsedText')
+    self.code_tesseract = format_code(resource.to_s)
   end
 
   def process_image_by_computer_vision
@@ -54,7 +45,11 @@ class Voucher < ApplicationRecord
     end
 
     if response.code == '200'
-      self.code_computer_vision = response.body.scan(/"text":"(.+?)"/).join(" ")
+      self.code_computer_vision = format_code(response.body.scan(/"text":"(.+?)"/).join(" "))
     end
+  end
+
+  def format_code(code)
+    code.delete(' ').delete("\n")
   end
 end

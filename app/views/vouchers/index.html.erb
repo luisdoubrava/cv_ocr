@@ -23,6 +23,7 @@
   <% @vouchers.each do |voucher| %>
     <tbody>
       <%= form_for voucher do |f| %>
+        <% codes = [voucher.code_tesseract, voucher.code_google, voucher.code_computer_vision] %>
         <tr class="voucher-row">
           <td class="voucher-code">
             <%= image_tag voucher.image_url, width: '200' if voucher.image %>
@@ -39,6 +40,9 @@
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-copy"></span>
               </span>
+              <% if (codes.count(voucher.code_tesseract) > 1) %>
+                <span class="glyphicon glyphicon-ok pull-right voucher-match"></span>
+              <% end %>
             </div>
           </td>
           <td>
@@ -47,6 +51,9 @@
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-copy"></span>
               </span>
+              <% if (codes.count(voucher.code_google) > 1) %>
+                <span class="glyphicon glyphicon-ok pull-right voucher-match"></span>
+              <% end %>
             </div>
           </td>
           <td>
@@ -55,6 +62,9 @@
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-copy"></span>
               </span>
+              <% if (codes.count(voucher.code_computer_vision) > 1) %>
+                <span class="glyphicon glyphicon-ok pull-right voucher-match"></span>
+              <% end %>
             </div>
           </td>
         </tr>
