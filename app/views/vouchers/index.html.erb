@@ -4,8 +4,8 @@
     <tr>
       <th>Image</th>
       <th>Tesseract</th>
-      <th>OCR Space</th>
       <th>Google Cloud Vision</th>
+      <th>Computer Vision</th>
     </tr>
   </thead>
   <% @vouchers.each do |voucher| %>
@@ -13,8 +13,8 @@
       <tr>
         <td><%= image_tag voucher.image_url, width: '200' if voucher.image %></td>
         <td><%= voucher.code_tesseract %></td>
-        <td><%= voucher.code_ocr_space %></td>
         <td><%= voucher.code_google %></td>
+        <td><%= voucher.code_computer_vision %></td>
       </tr>
     </tbody>
 <% end %>

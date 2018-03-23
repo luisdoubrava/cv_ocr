@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321142532) do
+ActiveRecord::Schema.define(version: 20180323112741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20180321142532) do
     t.string "code_google"
     t.string "code_tesseract"
     t.string "code_ocr_space"
+    t.string "code_computer_vision"
   end
 
 end
