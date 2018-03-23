@@ -5,8 +5,8 @@
       <th>Image</th>
       <th>Code</th>
       <th>Tesseract</th>
-      <th>Computer Vision</th>
       <th>Google Cloud Vision</th>
+      <th>Computer Vision</th>
     </tr>
   </thead>
   <% @vouchers.each do |voucher| %>
@@ -23,10 +23,10 @@
             <%= f.text_area :code_tesseract, readonly: true, cols: 50, rows: 3  %>
           </td>
           <td>
-            <%= f.text_area :code_ocr_space, readonly: true, cols: 50, rows: 3 %>
+            <%= f.text_area :code_google, readonly: true, cols: 50, rows: 3 %>
           </td>
           <td>
-            <%= f.text_area :code_google, readonly: true, cols: 50, rows: 3 %>
+            <%= f.text_area :code_computer_vision, readonly: true, cols: 50, rows: 3 %>
           </td>
         </tr>
       <% end %>
